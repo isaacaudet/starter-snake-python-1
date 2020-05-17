@@ -28,14 +28,14 @@ class Battlesnake(object):
         # cherrypy.request.json contains information about the game that's about to be played.
         # TODO: Use this function to decide how your snake is going to look on the board.
         data = cherrypy.request.json
-        board_x = data['board']['width']
-        board_y = data['board']['height']
-        snakes = data['you']
-        snakes.append(data['board']['snakes'])
-        board = SnakeBoard(board_x, board_y, snakes)
-        print(board)
-        print(snakes)
-        print("START")
+        # board_x = data['board']['width']
+        # board_y = data['board']['height']
+        # snakes = data['you']
+        # snakes.append(data['board']['snakes'])
+        # board = SnakeBoard(board_x, board_y, snakes)
+        # print(board)
+        # print(snakes)
+        # print("START")
         return {"color": "#03befc", "headType": "shac-caffeine", "tailType": "regular"}
 
     @cherrypy.expose
