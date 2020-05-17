@@ -33,7 +33,7 @@ class Battlesnake(object):
         board_y = data['board']['height']
         snakes = data['board']['snakes']
         board = SnakeBoard(board_x, board_y, snakes)
-        for i in board.snakes():
+        for i in board.snakes:
             print(i)
         # print("START")
         return {"color": "#03befc", "headType": "shac-caffeine", "tailType": "regular"}
