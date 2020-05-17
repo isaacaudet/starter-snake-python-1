@@ -6,7 +6,6 @@ import cherrypy
 This is a simple Battlesnake server written in Python.
 For instructions see https://github.com/BattlesnakeOfficial/starter-snake-python/README.md
 """
-board = []
 
 
 class Battlesnake(object):
@@ -28,7 +27,10 @@ class Battlesnake(object):
         # cherrypy.request.json contains information about the game that's about to be played.
         # TODO: Use this function to decide how your snake is going to look on the board.
         data = cherrypy.request.json
-        print(data)
+        board_x = data['board']['width']
+        board_y = data['board']['height']
+        board = [['' for i in range(board_x)]for j in range(board_y)]
+        print(board)
         print("START")
         return {"color": "#03befc", "headType": "shac-caffeine", "tailType": "regular"}
 
