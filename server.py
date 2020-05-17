@@ -37,7 +37,8 @@ class Battlesnake(object):
             print(i.coords)
             print(i.whole_snake)
             print(i.id)
-
+        for i in board.board:
+            print(i)
         # print("START")
         return {"color": "#03befc", "headType": "shac-caffeine", "tailType": "regular"}
 
