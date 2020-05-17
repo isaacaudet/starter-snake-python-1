@@ -2,6 +2,7 @@ import os
 import random
 import cherrypy
 from snake_board import SnakeBoard
+import numpy as np
 
 """
 This is a simple Battlesnake server written in Python.
@@ -32,8 +33,8 @@ class Battlesnake(object):
         board_y = data['board']['height']
         snakes = data['board']['snakes']
         board = SnakeBoard(board_x, board_y, snakes)
-        print(board.board)
-        print(board.snakes)
+        for i in board.snakes():
+            print(i)
         # print("START")
         return {"color": "#03befc", "headType": "shac-caffeine", "tailType": "regular"}
 
