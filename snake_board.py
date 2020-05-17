@@ -14,7 +14,7 @@ class SnakeBoard(object):
         for i in range(self.num_snakes):
             self.snakes.append(Snake(players[i]['id'], players[i]['head']))
         for i in self.snakes:
-            self.board[i.coords[0][0], i.coords[0][1]] = i
+            self.board[i.coords[0][0], i.coords[0][1]] = Tile.HEAD
 
 
     # def update_board(self, moves):
