@@ -30,9 +30,9 @@ class Battlesnake(object):
         data = cherrypy.request.json
         board_x = data['board']['width']
         board_y = data['board']['height']
-        snakes = data['you']
-        snakes.append(data['board']['snakes'])
-        board = SnakeBoard(board_x, board_y, snakes)
+        ai = data['you']
+        snakes = data['board']['snakes']
+        board = SnakeBoard(board_x, board_y, snakes, ai)
         print(board.board)
         print(board.snakes)
         # print("START")
