@@ -33,7 +33,9 @@ class Battlesnake(object):
         snakes = data['you']
         snakes.append(data['board']['snakes'])
         board = SnakeBoard(board_x, board_y, snakes)
-
+        print(board.board)
+        print(board.snakes)
+        print(board.num_snakes)
         print("START")
         return {"color": "#03befc", "headType": "shac-caffeine", "tailType": "regular"}
 
