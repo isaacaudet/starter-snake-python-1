@@ -5,13 +5,10 @@ from enum import Enum
 
 
 class SnakeBoard(object):
-    def __init__(self, x, y, players):
+    def __init__(self, x, y):
         self.board = [['' for i in range(x)] for _ in range(y)]
-        self.snakes = players
-        self.num_snakes = len(self.snakes)
-        print(self.board)
-        print(self.snakes)
-        print(self.num_snakes)
+        # self.snakes = players
+        # self.num_snakes = len(self.snakes)
 
 
 class Tile(Enum):
