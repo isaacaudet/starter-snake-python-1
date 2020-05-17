@@ -6,6 +6,7 @@ import cherrypy
 This is a simple Battlesnake server written in Python.
 For instructions see https://github.com/BattlesnakeOfficial/starter-snake-python/README.md
 """
+board = []
 
 
 class Battlesnake(object):
@@ -27,8 +28,9 @@ class Battlesnake(object):
         # cherrypy.request.json contains information about the game that's about to be played.
         # TODO: Use this function to decide how your snake is going to look on the board.
         data = cherrypy.request.json
+        print(data)
         print("START")
-        return {"color": "#03befc", "headType": "shac-caffeine", "tailType": "shac-mouse"}
+        return {"color": "#03befc", "headType": "shac-caffeine", "tailType": "regular"}
 
     @cherrypy.expose
     @cherrypy.tools.json_in()
@@ -38,7 +40,7 @@ class Battlesnake(object):
         # Valid moves are "up", "down", "left", or "right".
         # TODO: Use the information in cherrypy.request.json to decide your next move.
         data = cherrypy.request.json
-
+        print(data)
         # Choose a random direction to move in
         possible_moves = ["up", "down", "left", "right"]
         move = random.choice(possible_moves)
@@ -52,6 +54,7 @@ class Battlesnake(object):
         # This function is called when a game your snake was in ends.
         # It's purely for informational purposes, you don't have to make any decisions here.
         data = cherrypy.request.json
+        print(data)
         print("END")
         return "ok"
 
@@ -60,7 +63,6 @@ if __name__ == "__main__":
     server = Battlesnake()
     cherrypy.config.update({"server.socket_host": "0.0.0.0"})
     cherrypy.config.update(
-        {"server.socket_port": int(os.environ.get("PORT", "8080")), }
-    )
+        {"server.socket_port": int(os.environ.get("PORT", "8080"))})
     print("Starting Battlesnake Server...")
     cherrypy.quickstart(server)
