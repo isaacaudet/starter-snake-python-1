@@ -10,11 +10,11 @@ class SnakeBoard(object):
         self.board = np.zeros((x, y))
         self.snakes = list()
         self.num_snakes = len(players)
-        print(self.num_snakes)
+
         for i in range(self.num_snakes):
             self.snakes.append(Snake(players[i]['id'], players[i]['head']))
         for i in self.snakes:
-            self.board[i.coords[0][0], i.coords[0][1]] = Tile.HEAD.value
+            self.board[i.coords[0][1], i.coords[0][0]] = Tile.HEAD.value
 
 
     # def update_board(self, moves):
@@ -41,18 +41,18 @@ test = [{'id': 'gs_66HcWHXbQcQ8bjQkKMmKqw7Q', 'name': 'ethans big snake', 'healt
          'body': [{'x': 5, 'y': 9}, {'x': 5, 'y': 9}, {'x': 5, 'y': 9}], 'head': {'x': 5, 'y': 9},
          'tail': {'x': 5, 'y': 9}, 'length': 3, 'shout': ''}]
 
-
-def main():
-    snakes = list()
-    num_snakes = len(test)
-    print(num_snakes)
-    for i in range(num_snakes):
-        snakes.append(Snake(test[i]['id'], test[i]['head']))
-    for i in snakes:
-        print(i.id)
-        print(i.coords)
-        print(i.whole_snake)
-
-
-if __name__ == '__main__':
-    main()
+#
+# def main():
+#     snakes = list()
+#     num_snakes = len(test)
+#     print(num_snakes)
+#     for i in range(num_snakes):
+#         snakes.append(Snake(test[i]['id'], test[i]['head']))
+#     for i in snakes:
+#         print(i.id)
+#         print(i.coords)
+#         print(i.whole_snake)
+#
+#
+# if __name__ == '__main__':
+#     main()
