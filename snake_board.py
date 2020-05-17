@@ -9,6 +9,7 @@ class SnakeBoard(object):
         self.board = [['' for i in range(x)] for _ in range(y)]
         self.snakes = players
         self.num_snakes = len(self.snakes)
+        print(self.num_snakes)
         for i in range(self.num_snakes):
             self.board[self.snakes[i]['body'][0]['y']][self.snakes[i]['body'][0]['x']] = Tile.HEAD
 
