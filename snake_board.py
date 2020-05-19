@@ -43,8 +43,8 @@ class Snake(SnakeBoard):
 
     def update_snake(self, snake_moves):
         for i in range(super().num_snakes):
-            super().snakes[i]['health'] = snake_moves[i]['health']
-            super().snakes[i]['body'] = snake_moves[i]['body']
+            super().snakes[i].health = snake_moves[i]['health']
+            super().snakes[i].body = snake_moves[i]['body']
 
 
 class Tile(Enum):
