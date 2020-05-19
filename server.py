@@ -38,12 +38,12 @@ class Battlesnake(object):
 
         self.board.start_board(board_x, board_y, snakes)
 
-        for i in self.board.snakes:
-            print(i.coords)
-            print(i.id)
-            print(i.body)
-        for i in self.board.board:
-            print(i)
+        # for i in self.board.snakes:
+        #     print(i.coords)
+        #     print(i.id)
+        #     print(i.body)
+        # for i in self.board.board:
+        #     print(i)
         # print("START")
         return {"color": "#03befc", "headType": "shac-caffeine", "tailType": "regular"}
 
@@ -52,7 +52,7 @@ class Battlesnake(object):
     @cherrypy.tools.json_out()
     def move(self):
         data = cherrypy.request.json
-        self.board.update_board(data['snakes'], data['food'])
+        seboard.update_board(data['snakes'], data['food'])
         possible_moves = ["up", "down", "left", "right"]
         move = random.choice(possible_moves)
 
