@@ -11,6 +11,9 @@ For instructions see https://github.com/BattlesnakeOfficial/starter-snake-python
 
 
 class Battlesnake(object):
+    def __int__(self):
+        self.board = SnakeBoard()
+
     @cherrypy.expose
     def index(self):
         # If you open your snake URL in a browser you should see this message.
@@ -32,12 +35,14 @@ class Battlesnake(object):
         board_x = data['board']['width']
         board_y = data['board']['height']
         snakes = data['board']['snakes']
-        board = SnakeBoard(board_x, board_y, snakes)
-        for i in board.snakes:
+
+        self.board.start_board(board_x, board_y, snakes)
+
+        for i in self.board.snakes:
             print(i.coords)
-            print(i.whole_snake)
             print(i.id)
-        for i in board.board:
+            print(i.body)
+        for i in self.board.board:
             print(i)
         # print("START")
         return {"color": "#03befc", "headType": "shac-caffeine", "tailType": "regular"}
@@ -46,11 +51,8 @@ class Battlesnake(object):
     @cherrypy.tools.json_in()
     @cherrypy.tools.json_out()
     def move(self):
-        # This function is called on every turn of a game. It's how your snake decides where to move.
-        # Valid moves are "up", "down", "left", or "right".
-        # TODO: Use the information in cherrypy.request.json to decide your next move.
         data = cherrypy.request.json
-        # Choose a random direction to move in
+        self.board.update_board(data['snakes'], data['food'])
         possible_moves = ["up", "down", "left", "right"]
         move = random.choice(possible_moves)
 

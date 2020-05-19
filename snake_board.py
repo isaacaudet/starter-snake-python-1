@@ -6,7 +6,12 @@ from enum import Enum
 
 
 class SnakeBoard(object):
-    def __init__(self, x, y, players):
+    def __init__(self):
+        self.board = None
+        self.snakes = list()
+        self.num_snakes = None
+
+    def start_board(self, x, y, players):
         self.board = np.zeros((x, y))
         self.snakes = list()
         self.num_snakes = len(players)
@@ -16,15 +21,30 @@ class SnakeBoard(object):
         for i in self.snakes:
             self.board[i.coords[0][1], i.coords[0][0]] = Tile.HEAD.value
 
+    def update_board(self, snake_moves, food):
+        if len(self.num_snakes) > len(snake_moves):
+            self.num_snakes = len(snake_moves)
+            ids = [i for i in snake_moves[i]['id']]
+            for i in self.snakes:
+                if i.id not in ids:
+                    self.snakes.remove(i)
 
-    # def update_board(self, moves):
+        self.snakes.update_snake(snake_moves)
 
 
-class Snake(object):
-    def __init__(self, id_, coords):
-        self.id = id_
+class Snake(SnakeBoard):
+    def __init__(self, snake_id, coords):
+        super().__init__()
+        self.id = snake_id
         self.coords = [[coords['x'], coords['y']]]
-        self.whole_snake = {Tile.HEAD: self.coords[0], Tile.BODY: self.coords[0], Tile.TAIL: self.coords[0]}
+        self.body = [{Tile.HEAD: self.coords[0]}, {Tile.BODY: self.coords[0]}, {Tile.TAIL: self.coords[0]}]
+        self.health = 100
+        self.length = 3
+
+    def update_snake(self, snake_moves):
+        for i in range(super().num_snakes):
+            super().snakes[i]['health'] = snake_moves[i]['health']
+            super().snakes[i]['body'] = snake_moves[i]['body']
 
 
 class Tile(Enum):
