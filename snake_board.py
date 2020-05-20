@@ -43,6 +43,14 @@ class SnakeBoard(object):
         for i in food:
             self.board[i['x'], i['y']] = Tile.FOOD
 
+    def update_snakes(self, snakes):
+        for i in range(len(snakes)):
+            self.snakes[i].health = snakes[i]['health']
+            self.snakes[i].body = snakes[i]['body']
+            self.snakes[i].head = snakes[i]['head']
+            self.snakes[i].tail = snakes[i]['tail']
+            self.snakes[i].length = snakes[i]['length']
+
 
 class Snake(SnakeBoard):
     def __init__(self, snake_id, snake):
@@ -54,14 +62,6 @@ class Snake(SnakeBoard):
         self.tail = snake['tail']
         self.health = 100
         self.length = 3
-
-    def update_snakes(self, snakes):
-        for i in range(len(snakes)):
-            super().snakes[i].health = snakes[i]['health']
-            super().snakes[i].body = snakes[i]['body']
-            super().snakes[i].head = snakes[i]['head']
-            super().snakes[i].tail = snakes[i]['tail']
-            super().snakes[i].length = snakes[i]['length']
 
 
 class Tile(Enum):
