@@ -20,7 +20,7 @@ class SnakeBoard(object):
         for i in range(self.num_snakes):
             self.snakes.append(Snake(snakes[i]))
         for i in self.snakes:
-            self.board[i.coords[0][1], i.coords[0][0]] = Tile.HEAD.value
+            self.board[i.head['y'], i.head['x']] = Tile.HEAD.value
 
     def update_board(self, snakes, food):
         # update snakes lsit if num_snakes != len(snakes)
