@@ -68,7 +68,11 @@ class Snake(SnakeBoard):
 
 
 class Tile(Enum):
+    EMPTY = 0
     HEAD = 1
     BODY = 2
     TAIL = 3
     FOOD = 4
+
+
+class
