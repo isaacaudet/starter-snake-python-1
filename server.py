@@ -13,6 +13,7 @@ For instructions see https://github.com/BattlesnakeOfficial/starter-snake-python
 class Battlesnake(object):
     def __init__(self):
         self.board = SnakeBoard()
+        self.turn = 0
 
     @cherrypy.expose
     def index(self):
@@ -33,13 +34,15 @@ class Battlesnake(object):
         snakes = data['board']['snakes']
 
         self.board.start_board(board_x, board_y, snakes)
-
+        self.turn += 1
         return {"color": "#03befc", "headType": "shac-caffeine", "tailType": "regular"}
 
     @cherrypy.expose
     @cherrypy.tools.json_in()
     @cherrypy.tools.json_out()
     def move(self):
+        self.turn += 1
+        print(self.turn)
         data = cherrypy.request.json
         self.board.update_board(data['board']['snakes'], data['board']['food'])
         for i in self.board.board:
