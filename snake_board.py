@@ -31,8 +31,12 @@ class SnakeBoard(object):
                 if i.id not in ids:
                     self.snakes.remove(i)
         # update snake body
-        for i in range(self.num_snakes):
-            self.snakes[i].update_snake(snakes[i])
+        print(self.num_snakes)
+        print(snakes)
+        print(food)
+
+        # for i in range(self.num_snakes):
+        #     self.snakes[i].update_snake(snakes[i])
 
         # update board pos
         for snake in self.snakes:
