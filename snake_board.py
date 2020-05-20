@@ -55,7 +55,7 @@ class Snake(SnakeBoard):
         self.id = snake['id']
         self.body = snake['body']
         self.head = snake['head']
-        self.tail = snake['tail']
+        self.tail = {}
         self.health = 100
         self.length = 3
 
