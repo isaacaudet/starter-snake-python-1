@@ -52,7 +52,10 @@ class Battlesnake(object):
     @cherrypy.tools.json_out()
     def move(self):
         data = cherrypy.request.json
-        self.board.update_board(data['snakes'], data['food'])
+        self.board.update_board(data['board']['snakes'], data['board']['food'])
+        for i in self.board.board:
+            print(i)
+
         possible_moves = ["up", "down", "left", "right"]
         move = random.choice(possible_moves)
 
