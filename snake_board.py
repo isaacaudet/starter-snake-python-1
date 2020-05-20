@@ -13,12 +13,12 @@ class SnakeBoard(object):
         self.num_snakes = int()
         self.food = list()
 
-    def start_board(self, x, y, players):
+    def start_board(self, x, y, snakes):
         self.board = np.zeros((x, y))
-        self.num_snakes = int(len(players))
+        self.num_snakes = int(len(snakes))
 
         for i in range(self.num_snakes):
-            self.snakes.append(Snake(players[i]))
+            self.snakes.append(Snake(snakes[i]))
         for i in self.snakes:
             self.board[i.coords[0][1], i.coords[0][0]] = Tile.HEAD.value
 
@@ -50,9 +50,9 @@ class SnakeBoard(object):
 
 
 class Snake(SnakeBoard):
-    def __init__(self, snake_id, snake):
+    def __init__(self, snake):
         super().__init__()
-        self.id = snake_id
+        self.id = snake['id']
         self.body = snake['body']
         self.head = snake['head']
         self.tail = snake['tail']
