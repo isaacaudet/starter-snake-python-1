@@ -18,7 +18,7 @@ class SnakeBoard(object):
         self.num_snakes = int(len(players))
 
         for i in range(self.num_snakes):
-            self.snakes.append(Snake(players[i]['id'], players[i]['body']))
+            self.snakes.append(Snake(players[i]))
         for i in self.snakes:
             self.board[i.coords[0][1], i.coords[0][0]] = Tile.HEAD.value
 
