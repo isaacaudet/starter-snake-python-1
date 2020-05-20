@@ -41,13 +41,13 @@ class SnakeBoard(object):
         # update board pos
         for snake in self.snakes:
             for i in snake.body:
-                self.board[i['x'], i['y']] = Tile.BODY
-            self.board[snake.head['x'], snake.head['y']] = Tile.HEAD
-            self.board[snake.tail['x'], snake.tail['y']] = Tile.TAIL
+                self.board[i['x'], i['y']] = Tile.BODY.value
+            self.board[snake.head['x'], snake.head['y']] = Tile.HEAD.value
+            self.board[snake.tail['x'], snake.tail['y']] = Tile.TAIL.value
 
         # update food pos
         for i in food:
-            self.board[i['x'], i['y']] = Tile.FOOD
+            self.board[i['x'], i['y']] = Tile.FOOD.value
 
 
 class Snake(SnakeBoard):
