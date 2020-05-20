@@ -14,6 +14,7 @@ class SnakeBoard(object):
         self.food = list()
 
     def start_board(self, x, y, snakes):
+        # Create numpy array for board representation. Loads snake and good positions on the board.
         self.board = np.zeros((x, y))
         self.num_snakes = int(len(snakes))
 
@@ -23,7 +24,7 @@ class SnakeBoard(object):
             self.board[i.head['y'], i.head['x']] = Tile.HEAD.value
 
     def update_board(self, snakes, food):
-        # update snakes lsit if num_snakes != len(snakes)
+        # update snakes list if num_snakes != len(snakes)
         print(self.num_snakes)
         if self.num_snakes > len(snakes):
             self.num_snakes = len(snakes)
@@ -35,7 +36,10 @@ class SnakeBoard(object):
         print('self.snakes:')
         print(self.snakes)
         for i in self.snakes:
-            print(i)
+            print(i.body)
+            print(i.tail)
+            print(i.length)
+            print(i.health)
 
         # update board pos
         for snake in self.snakes:
