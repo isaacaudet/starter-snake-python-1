@@ -31,30 +31,30 @@ class SnakeBoard(object):
                 if i.id not in ids:
                     self.snakes.remove(i)
         # update snake body
-        print(self.num_snakes)
-        print(snakes)
-        print(food)
+        print('self.snakes:')
+        print(self.snakes)
 
-        # for i in range(self.num_snakes):
-        #     self.snakes[i].update_snake(snakes[i])
+        print('snake.json:')
+        print(snakes)
+        for i in range(self.num_snakes):
+            self.snakes[i].update_snake(snakes[i])
 
         # update board pos
         for snake in self.snakes:
             for i in snake.body:
-                self.board[i['x'], i['y']] = Tile.BODY.value
-            self.board[snake.head['x'], snake.head['y']] = Tile.HEAD.value
-            self.board[snake.tail['x'], snake.tail['y']] = Tile.TAIL.value
+                self.board[i['y'], i['x']] = Tile.BODY.value
+            self.board[snake.head['y'], snake.head['x']] = Tile.HEAD.value
+            self.board[snake.tail['y'], snake.tail['x']] = Tile.TAIL.value
 
         # update food pos
         for i in food:
-            self.board[i['x'], i['y']] = Tile.FOOD.value
+            self.board[i['y'], i['x']] = Tile.FOOD.value
 
 
 class Snake(SnakeBoard):
     def __init__(self, snake_id, snake):
         super().__init__()
         self.id = snake_id
-        self.coords = [[snake['body']['x'], snake['body']['y']]]
         self.body = snake['body']
         self.head = snake['head']
         self.tail = snake['tail']
