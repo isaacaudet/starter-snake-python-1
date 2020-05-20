@@ -11,7 +11,7 @@ For instructions see https://github.com/BattlesnakeOfficial/starter-snake-python
 
 
 class Battlesnake(object):
-    def __int__(self):
+    def __init__(self):
         self.board = SnakeBoard()
 
     @cherrypy.expose
