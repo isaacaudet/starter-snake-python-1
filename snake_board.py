@@ -30,8 +30,10 @@ class SnakeBoard(object):
             for i in self.snakes:
                 if i.id not in ids:
                     self.snakes.remove(i)
+        # update snake body
+        for i in range(self.num_snakes):
+            self.snakes[i].update_snake(snakes[i])
 
-        self.snakes.update_snakes(snakes)
         # update board pos
         for snake in self.snakes:
             for i in snake.body:
@@ -42,14 +44,6 @@ class SnakeBoard(object):
         # update food pos
         for i in food:
             self.board[i['x'], i['y']] = Tile.FOOD
-
-    def update_snakes(self, snakes):
-        for i in range(len(snakes)):
-            self.snakes[i].health = snakes[i]['health']
-            self.snakes[i].body = snakes[i]['body']
-            self.snakes[i].head = snakes[i]['head']
-            self.snakes[i].tail = snakes[i]['tail']
-            self.snakes[i].length = snakes[i]['length']
 
 
 class Snake(SnakeBoard):
@@ -62,6 +56,13 @@ class Snake(SnakeBoard):
         self.tail = snake['tail']
         self.health = 100
         self.length = 3
+
+    def update_snake(self, snake):
+        self.health = snake['health']
+        self.body = snake['body']
+        self.head = snake['head']
+        self.tail = snake['tail']
+        self.length = snake['length']
 
 
 class Tile(Enum):
