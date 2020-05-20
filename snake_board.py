@@ -24,6 +24,7 @@ class SnakeBoard(object):
 
     def update_board(self, snakes, food):
         # update snakes lsit if num_snakes != len(snakes)
+        print(self.num_snakes)
         if self.num_snakes > len(snakes):
             self.num_snakes = len(snakes)
             ids = [snakes[i]['id'] for i in range(self.num_snakes)]
@@ -33,11 +34,8 @@ class SnakeBoard(object):
         # update snake body
         print('self.snakes:')
         print(self.snakes)
-
-        print('snake.json:')
-        print(snakes)
-        for i in range(self.num_snakes):
-            self.snakes[i].update_snake(snakes[i])
+        for i in self.snakes:
+            print(i)
 
         # update board pos
         for snake in self.snakes:
